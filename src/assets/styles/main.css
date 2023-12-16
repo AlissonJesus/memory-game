@@ -15,9 +15,19 @@
     padding: 40px 20px; 
 }
 
-.game__card {
+.game__board {
+    display: flex;
+    flex-wrap: nowrap;
+    
+}
+
+.game__board-item {
     width: 100px;
     height: 100px;
     background-color: blue;
     color: white;
+    border: red solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
