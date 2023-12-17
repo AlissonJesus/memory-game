@@ -1,29 +1,29 @@
+import createGameListener from "./Listeners.js";
 import getShuffleEmojis from "./emoji.js";
 
 export default function createGame({ views, values }) {
-  const emojis = getShuffleEmojis();
+  const { scrambledEmojis, emojiList: emojis } = getShuffleEmojis();
+
+  const listeners = createGameListener({views, values}, emojis);
 
   const createBoard = () => {
-    const boardItems = emojis.reduce((container, emoji) => {
-      container.appendChild(createBoardItem(emoji));
+    const boardItems = scrambledEmojis.reduce((container, { id }) => {
+      container.appendChild(createBoardItem(id));
       return container;
     }, document.createDocumentFragment());
 
     views.board.appendChild(boardItems);
   };
 
-  const createBoardItem = ({ emoji, id }) => {
+  const createBoardItem = (id) => {
     const element = document.createElement("p");
     element.classList.add("game__board-item");
     element.setAttribute("data-id", id);
-    element.textContent = emoji;
     return element;
   };
 
-  const resetGame = () => {
-  }
-
   const init = () => {
+    listeners.init();
     createBoard();
   };
 

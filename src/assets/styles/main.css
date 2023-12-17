@@ -27,9 +27,17 @@
     width: 100px;
     height: 100px;
     background-color: blue;
+    border: 1px solid black;
     color: white;
-    border: red solid 1px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.game__board-item--visible {
+    visibility: visible;
+}
+
+.game__btn-reset, .game__board-item {
+    cursor: pointer;
 }
